@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		60C501993C6A299F08A33644 /* Pods_TestWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D37305EE1C5F3C2901996E /* Pods_TestWeather.framework */; };
 		6678923E2BDFD1B500833942 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678923D2BDFD1B500833942 /* NetworkService.swift */; };
+		667892402BDFDA6F00833942 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678923F2BDFDA6F00833942 /* LocationService.swift */; };
 		669882BD2BDFCD2000152E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669882BC2BDFCD2000152E38 /* AppDelegate.swift */; };
 		669882BF2BDFCD2000152E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669882BE2BDFCD2000152E38 /* SceneDelegate.swift */; };
 		669882C12BDFCD2000152E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669882C02BDFCD2000152E38 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		150455E3DEBD20462EC98D41 /* Pods-TestWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestWeather.release.xcconfig"; path = "Target Support Files/Pods-TestWeather/Pods-TestWeather.release.xcconfig"; sourceTree = "<group>"; };
 		6678923D2BDFD1B500833942 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		6678923F2BDFDA6F00833942 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		669882B92BDFCD2000152E38 /* TestWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		669882BC2BDFCD2000152E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		669882BE2BDFCD2000152E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				6678923D2BDFD1B500833942 /* NetworkService.swift */,
+				6678923F2BDFDA6F00833942 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				669882C72BDFCD2000152E38 /* TestWeather.xcdatamodeld in Sources */,
 				669882C12BDFCD2000152E38 /* ViewController.swift in Sources */,
 				669882BD2BDFCD2000152E38 /* AppDelegate.swift in Sources */,
+				667892402BDFDA6F00833942 /* LocationService.swift in Sources */,
 				669882BF2BDFCD2000152E38 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
