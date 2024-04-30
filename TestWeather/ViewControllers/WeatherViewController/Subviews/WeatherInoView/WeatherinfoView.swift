@@ -16,4 +16,12 @@ class WeatherinfoView: UIView {
     static func loadView() -> WeatherinfoView {
         return Bundle.main.loadNibNamed("WeatherinfoView", owner: nil)?.last as! WeatherinfoView
     }
+    
+    func setInfo(_ weather: Weather) {
+        let temperature = Int(weather.temperature)
+        let windSpeed = Int(weather.windSpeed)
+        
+        self.degreeLabel.text = "\(temperature)°"
+        self.windLabel.text = "\(windSpeed) km/h"
+    }
 }

@@ -50,10 +50,9 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: WeatherViewControllerDelegate {
     
     func setWeather(_ weather: Weather) {
-        let info = WeatherinfoView.loadView()
-        info.degreeLabel.text = "\(Int(weather.temperature))"
-        info.windLabel.text = "\(weather.windSpeed)"
-        self.setViewToContainer(info)
+        let infoView = WeatherinfoView.loadView()
+        infoView.setInfo(weather)
+        self.setViewToContainer(infoView)
     
     }
     
