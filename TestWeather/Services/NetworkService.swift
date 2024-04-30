@@ -17,11 +17,12 @@ class NetworkService {
      
     static var shared = NetworkService()
     
-    func request(
+    func request<T: Codable>(
         path: String,
         method: HTTPMethod,
         parameters: Parameters? = nil,
-        success: @escaping SuccessTask,
+        decadable: T.Type,
+        success: @escaping (T) -> (),
         failure: @escaping FailureTask) {
             
             AF.request(path, method: method, parameters: parameters)
@@ -30,8 +31,20 @@ class NetworkService {
                     
                     switch response.result {
                     case .success(let data):
-                        let JSON = self.handlerSuccess(data)
-                        success(JSON)
+//                        let JSON = self.handlerSuccess(data)
+//                        success(JSON)
+                        
+                        do {
+                            
+                            guard let data = data else { return }
+                            let decoder = JSONDecoder()
+                            let parseData = try decoder.decode(decadable, from: data)
+                            success(parseData)
+                            
+                        } catch {
+                            print("Error")
+                        }
+                        
                         
                     case .failure(let error):
                         let configuredError = self.handlerFailure(error)

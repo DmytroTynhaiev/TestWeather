@@ -7,23 +7,54 @@
 
 import UIKit
 
+protocol WeatherViewControllerDelegate: AnyObject {
+    func setWeather(_ weather: Weather)
+}
+ 
 class WeatherViewController: UIViewController {
 
+    var model = WeatherViewModel()
+    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var stackView: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.model.delegate = self
+        
+//        let info = WeatherinfoView.loadView()
+//        let loader = LoaderView()
+        
+        let info = WeatherinfoView.loadView()
+        self.setViewToContainer(info)
+        self.model.fetchWeather()
+                
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setViewToContainer(_ view: UIView) {
+        self.containerView.subviews.last?.removeFromSuperview()
+        self.containerView.addSubview(view)
+        view.center = self.containerView.center
     }
-    */
+    
+    //MARK: - Actions
+    
+    @IBAction func searchAction(_ sender: Any) {
+        let controller = SearchViewController.instantiate()
+        self.present(controller, animated: true)
+    }
+    
+}
 
+extension WeatherViewController: WeatherViewControllerDelegate {
+    
+    func setWeather(_ weather: Weather) {
+        let info = WeatherinfoView.loadView()
+        info.degreeLabel.text = "\(Int(weather.temperature))"
+        info.windLabel.text = "\(weather.windSpeed)"
+        self.setViewToContainer(info)
+    
+    }
+    
 }
