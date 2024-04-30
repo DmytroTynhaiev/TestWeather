@@ -46,8 +46,14 @@ class NetworkService {
     private func handlerSuccess(_ data: Data?) -> [String: Any]? {
         do {
             guard let data = data else { return nil }
-            let json = try JSONSerialization.jsonObject(with: data) as? [String : Any]
-            return json
+            let json = try JSONSerialization.jsonObject(with: data)
+            
+            switch json.self {
+            case is [String: Any]: return json as? [String : Any]
+            case is [[String: Any]]: return ["array" : json]
+            default: return nil
+            }
+        
         } catch {
             print("Seralization error")
             return nil

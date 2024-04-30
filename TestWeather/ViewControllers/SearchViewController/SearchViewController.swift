@@ -7,23 +7,54 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+protocol SearchViewControllerDelegate: AnyObject {
+    func updateTableView(with cities: [SearchCellModel])
+}
+
+class SearchViewController: BaseTableViewController {
+
+    var model = SearchViewControllerModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.configureSearchBar()
+        self.model.delegate = self
+        self.model.fetchCities()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Private
+    
+    private func configureSearchBar() {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search"
+        self.navigationItem.searchController = search
     }
-    */
 
 }
+
+// MARK: - SearchViewControllerDelegate
+
+extension SearchViewController: SearchViewControllerDelegate {
+    
+    func updateTableView(with cities: [SearchCellModel]) {
+        self.dataSource = cities
+        self.tableView.reloadData()
+    }
+ 
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension SearchViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        self.model.search(text)
+    }
+    
+}
+ 
+
+

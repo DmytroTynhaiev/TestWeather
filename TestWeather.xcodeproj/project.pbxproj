@@ -12,9 +12,11 @@
 		667892402BDFDA6F00833942 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678923F2BDFDA6F00833942 /* LocationService.swift */; };
 		667892452BDFE23F00833942 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667892442BDFE23F00833942 /* WeatherViewController.swift */; };
 		667892482BDFE35600833942 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667892472BDFE35600833942 /* SearchViewController.swift */; };
+		6678924C2BDFE88700833942 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678924B2BDFE88700833942 /* BaseTableViewController.swift */; };
+		6678924E2BDFF47C00833942 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678924D2BDFF47C00833942 /* SearchTableViewCell.swift */; };
+		667892502BDFF6E300833942 /* SearchViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678924F2BDFF6E300833942 /* SearchViewControllerModel.swift */; };
 		669882BD2BDFCD2000152E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669882BC2BDFCD2000152E38 /* AppDelegate.swift */; };
 		669882BF2BDFCD2000152E38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669882BE2BDFCD2000152E38 /* SceneDelegate.swift */; };
-		669882C12BDFCD2000152E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669882C02BDFCD2000152E38 /* ViewController.swift */; };
 		669882C42BDFCD2000152E38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669882C22BDFCD2000152E38 /* Main.storyboard */; };
 		669882C72BDFCD2000152E38 /* TestWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 669882C52BDFCD2000152E38 /* TestWeather.xcdatamodeld */; };
 		669882C92BDFCD2100152E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 669882C82BDFCD2100152E38 /* Assets.xcassets */; };
@@ -27,10 +29,12 @@
 		6678923F2BDFDA6F00833942 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		667892442BDFE23F00833942 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		667892472BDFE35600833942 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6678924B2BDFE88700833942 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		6678924D2BDFF47C00833942 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		6678924F2BDFF6E300833942 /* SearchViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerModel.swift; sourceTree = "<group>"; };
 		669882B92BDFCD2000152E38 /* TestWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		669882BC2BDFCD2000152E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		669882BE2BDFCD2000152E38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		669882C02BDFCD2000152E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		669882C32BDFCD2000152E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		669882C62BDFCD2000152E38 /* TestWeather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestWeather.xcdatamodel; sourceTree = "<group>"; };
 		669882C82BDFCD2100152E38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 		667892432BDFE21600833942 /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6678924F2BDFF6E300833942 /* SearchViewControllerModel.swift */,
 				667892472BDFE35600833942 /* SearchViewController.swift */,
 				667892492BDFE35900833942 /* Cells */,
 			);
@@ -107,8 +112,17 @@
 		667892492BDFE35900833942 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6678924D2BDFF47C00833942 /* SearchTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		6678924A2BDFE87300833942 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6678924B2BDFE88700833942 /* BaseTableViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		669882B02BDFCD2000152E38 = {
@@ -132,11 +146,11 @@
 		669882BB2BDFCD2000152E38 /* TestWeather */ = {
 			isa = PBXGroup;
 			children = (
+				6678924A2BDFE87300833942 /* Base */,
 				667892412BDFE16100833942 /* ViewControllers */,
 				6678923C2BDFD1A500833942 /* Services */,
 				669882BC2BDFCD2000152E38 /* AppDelegate.swift */,
 				669882BE2BDFCD2000152E38 /* SceneDelegate.swift */,
-				669882C02BDFCD2000152E38 /* ViewController.swift */,
 				669882C22BDFCD2000152E38 /* Main.storyboard */,
 				669882C82BDFCD2100152E38 /* Assets.xcassets */,
 				669882CA2BDFCD2100152E38 /* LaunchScreen.storyboard */,
@@ -269,14 +283,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6678924C2BDFE88700833942 /* BaseTableViewController.swift in Sources */,
 				6678923E2BDFD1B500833942 /* NetworkService.swift in Sources */,
 				669882C72BDFCD2000152E38 /* TestWeather.xcdatamodeld in Sources */,
 				667892482BDFE35600833942 /* SearchViewController.swift in Sources */,
-				669882C12BDFCD2000152E38 /* ViewController.swift in Sources */,
 				669882BD2BDFCD2000152E38 /* AppDelegate.swift in Sources */,
 				667892452BDFE23F00833942 /* WeatherViewController.swift in Sources */,
 				667892402BDFDA6F00833942 /* LocationService.swift in Sources */,
 				669882BF2BDFCD2000152E38 /* SceneDelegate.swift in Sources */,
+				667892502BDFF6E300833942 /* SearchViewControllerModel.swift in Sources */,
+				6678924E2BDFF47C00833942 /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
