@@ -27,7 +27,7 @@ class SearchViewControllerModel {
     }
     
     func search(_ text: String) {
-        let filteredCities = cities.filter { $0.city?.contains(text) ?? false }
+        let filteredCities = cities.filter { $0.city?.lowercased().contains(text) ?? false }
         let cities = filteredCities.count > 0 ? filteredCities : self.cities
         let cellModels = self.configureCellModel(cities)
         self.delegate?.updateTableView(with: cellModels)

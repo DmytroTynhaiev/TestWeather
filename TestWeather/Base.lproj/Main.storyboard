@@ -73,7 +73,7 @@
         <scene sceneID="qFr-Ws-D2v">
             <objects>
                 <tableViewController storyboardIdentifier="SearchViewController" id="o8P-8o-mGV" customClass="SearchViewController" customModule="TestWeather" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="uED-sJ-clp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="uED-sJ-clp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -119,7 +119,6 @@
                             <outlet property="delegate" destination="o8P-8o-mGV" id="uGv-1H-3Uu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="fUa-qh-1tl"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGb-I6-LvU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
