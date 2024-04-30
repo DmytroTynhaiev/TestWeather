@@ -17,10 +17,12 @@ class WeatherinfoView: UIView {
         return Bundle.main.loadNibNamed("WeatherinfoView", owner: nil)?.last as! WeatherinfoView
     }
     
-    func setInfo(_ weather: Weather) {
+    func setInfo(_ city: City, _ weather: Weather) {
+        let cityName = city.city
         let temperature = Int(weather.temperature)
         let windSpeed = Int(weather.windSpeed)
         
+        self.cityLabel.text = cityName
         self.degreeLabel.text = "\(temperature)°"
         self.windLabel.text = "\(windSpeed) km/h"
     }

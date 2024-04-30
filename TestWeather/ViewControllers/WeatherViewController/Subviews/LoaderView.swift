@@ -35,7 +35,7 @@ class LoaderView: UIView {
         layer.strokeColor = UIColor.red.cgColor
         layer.lineWidth = 20
         layer.lineCap = .round
-        layer.position = CGPoint(x: 200, y: 200)
+        layer.position = .zero
         self.layer.addSublayer(layer)
         
         

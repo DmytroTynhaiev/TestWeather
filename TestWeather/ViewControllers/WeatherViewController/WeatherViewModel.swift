@@ -9,20 +9,38 @@ import Foundation
 
 class WeatherViewModel {
     
+    var locationService = LocationService()
     weak var delegate: WeatherViewControllerDelegate?
     
     func fetchWeather() {
-        let path = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,wind_speed_10m"
-        NetworkService.shared.request(path: path, method: .get, decadable: Weather.self) { response in
-
-            self.delegate?.setWeather(response)
+        Task {
             
-        } failure: { error in
-            print(error.localizedDescription)
-        }
+            let placemark = await locationService.getPlacemark()
+  
+            let name = placemark.locality ?? "NAN"
+            let latitude = placemark.location?.coordinate.latitude ?? 0.0
+            let longitude = placemark.location?.coordinate.longitude ?? 0.0
+            let city = City(city: name, lat: "\(latitude)", lng: "\(longitude)")
+            
+             
+            let path = "https://api.open-meteo.com/v1/forecast"
+            let params = [
+                "latitude" : latitude,
+                "longitude" : longitude,
+                "current" : "temperature_2m,wind_speed_10m"
+            ]
+            
 
+            NetworkService.shared.request(path: path, method: .get, parameters: params ,decadable: Weather.self) { response in
+
+                self.delegate?.setWeather(city, response)
+                
+            } failure: { error in
+                print(error.localizedDescription)
+            }
+            
+        }
+    
     }
-    
-    
-    
+
 }

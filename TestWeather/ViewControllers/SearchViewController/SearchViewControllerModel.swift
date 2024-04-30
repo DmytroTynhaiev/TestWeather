@@ -27,7 +27,7 @@ class SearchViewControllerModel {
     }
     
     func search(_ text: String) {
-        let filteredCities = cities.filter { $0.city?.lowercased().contains(text) ?? false }
+        let filteredCities = cities.filter { $0.cityASCII.lowercased().contains(text) }
         let cities = filteredCities.count > 0 ? filteredCities : self.cities
         let cellModels = self.configureCellModel(cities)
         self.delegate?.updateTableView(with: cellModels)
@@ -35,9 +35,7 @@ class SearchViewControllerModel {
     
     private func configureCellModel(_ response: [City]) -> [SearchCellModel] {
         return response.compactMap {
-            let city = $0.city ?? "Unknow"
-            let country = $0.country ?? "Unknow"
-            return SearchCellModel(city: city, country: country)
+            return SearchCellModel(city: $0.city, country: $0.country)
         }
     }
 

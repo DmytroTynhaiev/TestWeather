@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol WeatherViewControllerDelegate: AnyObject {
-    func setWeather(_ weather: Weather)
+    func setWeather(_ city: City, _ weather: Weather)
 }
  
 class WeatherViewController: UIViewController {
@@ -20,16 +21,9 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.model.delegate = self
-        
-//        let info = WeatherinfoView.loadView()
-//        let loader = LoaderView()
-        
-        let info = WeatherinfoView.loadView()
-        self.setViewToContainer(info)
         self.model.fetchWeather()
-                
+        self.setViewToContainer(LoaderView())
     }
     
     private func setViewToContainer(_ view: UIView) {
@@ -47,13 +41,15 @@ class WeatherViewController: UIViewController {
     
 }
 
+// MARK: - WeatherViewControllerDelegate
+
 extension WeatherViewController: WeatherViewControllerDelegate {
     
-    func setWeather(_ weather: Weather) {
+    func setWeather(_ city: City, _ weather: Weather) {
         let infoView = WeatherinfoView.loadView()
-        infoView.setInfo(weather)
+        infoView.setInfo(city, weather)
         self.setViewToContainer(infoView)
-    
     }
     
 }
+
