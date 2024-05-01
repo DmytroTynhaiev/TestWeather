@@ -13,16 +13,20 @@ protocol WeatherViewControllerDelegate: AnyObject {
 }
  
 class WeatherViewController: UIViewController {
-
-    var model = WeatherViewModel()
     
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var stackView: UIStackView!
+    private var model = WeatherViewModel()
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var stackView: UIStackView!
+    
+    var city: City? {
+        didSet {
+            self.model.fetchWeather(for: self.city!)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.model.delegate = self
-        self.model.fetchWeather()
         self.setViewToContainer(LoaderView())
     }
     
