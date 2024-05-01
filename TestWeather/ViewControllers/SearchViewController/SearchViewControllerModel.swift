@@ -15,14 +15,23 @@ class SearchViewControllerModel {
     weak var delegate: SearchViewControllerDelegate?
     
     func fetchSavedCities() {
-        let context = TestWeatherPersistenceController.context
-        let request = SavedCity.fetchRequest()
-        let result = try? context.fetch(request)
-        let cities = result?.compactMap { City(from: $0) }
-        let cellModels = self.configureCellModel(cities ?? [])
         
-        self.savedCities = result!
-        self.delegate?.updateTableView(with: cellModels)
+        do {
+            
+            let context = TestWeatherPersistenceController.context
+            let request = SavedCity.fetchRequest()
+            let result = try context.fetch(request)
+            let cities = result.compactMap { City(from: $0) }
+            let cellModels = self.configureCellModel(cities)
+            
+            self.savedCities = result
+            self.delegate?.updateTableView(with: cellModels)
+            
+        } catch let error {
+            
+            AppHelper.showError(error)
+            self.delegate?.updateTableView(with: [])
+        }
     }
         
     func fetchCities() {
@@ -34,7 +43,12 @@ class SearchViewControllerModel {
             self.filteredCities = response
             self.delegate?.updateResultTableView(with: cellModels)
             
-        } failure: { error in print(error) }
+        } failure: { error in
+            
+            AppHelper.showError(error)
+            self.delegate?.updateResultTableView(with: [])
+            
+        }
     }
     
     func search(_ text: String) {

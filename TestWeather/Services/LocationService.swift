@@ -19,14 +19,13 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         super.init()
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
-        self.locationManager.requestLocation()
+        self.locationManager.requestWhenInUseAuthorization()
     }
     
-    func getPlacemark() async -> CLPlacemark {
-        return await Future<CLPlacemark, Never>() { [self] promise in
-            $placemark.sink { value in
-                guard let sinkValue = value else { return }
-                promise(.success(sinkValue))
+    func getPlacemark() async -> CLPlacemark? {
+        return await Future<CLPlacemark?, Never>() { [self] promise in
+            $placemark.dropFirst().sink { value in
+                promise(.success(value))
             }.store(in: &subscriptions)
         }.value
     }
@@ -34,23 +33,17 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     // MARK: - Internal
     
     internal func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-//        switch status {
-//        case .notDetermined: print("notDetermined")
-//            
-//        case .restricted: print("restricted")
-//            
-//        case .denied: print("denied")
-//            
-//        case .authorizedAlways: print("authorizedAlways")
-//         
-//        case .authorizedWhenInUse: print("authorizedWhenInUse")
-//            
-//        case .authorized: print("authorized")
-//        
-//        default: print("Nan")
-//        }
-        
+        switch status {
+            
+        case .authorizedAlways, .authorizedWhenInUse, .authorized, .notDetermined:
+            self.locationManager.requestLocation()
+            
+        case .denied:
+            self.placemark = nil
+            
+        default:
+            self.placemark = nil
+        }
     }
     
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -64,7 +57,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     internal func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: \(error.localizedDescription)")
+        AppHelper.showError(error)
     }
 }
 

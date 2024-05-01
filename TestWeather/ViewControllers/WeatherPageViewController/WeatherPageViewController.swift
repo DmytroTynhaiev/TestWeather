@@ -66,10 +66,12 @@ class WeatherPageViewController: UIPageViewController, WeatherPageViewController
             return controller
         }
         
-        self.pageControl.currentPage = 0
-        self.pageControl.numberOfPages = cities.count
-        self.setViewControllers([self.controllers.first!], direction: .forward, animated: true, completion: nil)
-        self.configureBottombar()
+        if !self.controllers.isEmpty {
+            self.pageControl.currentPage = 0
+            self.pageControl.numberOfPages = cities.count
+            self.setViewControllers([self.controllers.first!], direction: .forward, animated: true, completion: nil)
+            self.configureBottombar()
+        }
     }
 
     // MARK: - Actions
