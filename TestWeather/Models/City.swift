@@ -15,6 +15,11 @@ class City: Codable {
     var lng: String
     var country: String
     
+    enum CodingKeys: String, CodingKey {
+        case city, lat, lng, country
+        case cityASCII = "city_ascii"
+    }
+    
     init(city: String, lat: String, lng: String) {
         self.city = city
         self.lat = lat

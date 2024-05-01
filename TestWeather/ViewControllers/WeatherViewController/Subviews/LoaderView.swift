@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//19°
 
 class LoaderView: UIView {
     
@@ -21,39 +20,43 @@ class LoaderView: UIView {
     }
     
     private func createSubviews() {
-        
+        self.addCircle(0)
+        self.addCircle(1)
+        self.addCircle(2)
+    }
+    
+    
+    func addCircle(_ index: Int) {
         let path = UIBezierPath()
-        path.addArc(withCenter: .zero, radius: 90, startAngle: 90, endAngle: 0, clockwise: true)
-        
-        let toPath = UIBezierPath()
-        toPath.addArc(withCenter: .zero, radius: 90, startAngle: 180, endAngle: 0, clockwise: true)
-        
-        
+        path.addArc(withCenter: .zero, radius: 90, startAngle: 0, endAngle: .pi * 2, clockwise: true)
+                
         let layer = CAShapeLayer()
         layer.path = path.cgPath
         layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = UIColor.red.cgColor
+        layer.strokeColor = UIColor.white.withAlphaComponent(0.3).cgColor
+        layer.strokeEnd = 0
         layer.lineWidth = 20
         layer.lineCap = .round
-        layer.position = .zero
         self.layer.addSublayer(layer)
         
+        let startAnimation = CAKeyframeAnimation()
+        startAnimation.keyPath = "strokeEnd"
+        startAnimation.values = [0.001, 1, 1]
+        startAnimation.keyTimes = [0, 0.5, 1]
         
+        let endAnimation = CAKeyframeAnimation()
+        endAnimation.keyPath = "strokeStart"
+        endAnimation.values = [0.001, 0.001, 1]
+        endAnimation.keyTimes = [0, 0.5, 1]
         
-        let animation = CABasicAnimation(keyPath: "path")
-//        animation.fromValue = path.cgPath
-        animation.toValue = toPath.cgPath
-        animation.duration = 1.0
-        animation.repeatCount = .infinity
-        animation.timingFunction = CAMediaTimingFunction(name: .default)
-        animation.fillMode = .forwards
+        let group = CAAnimationGroup()
+        group.duration = 2.0
+        group.repeatCount = .infinity
+        group.beginTime = CACurrentMediaTime() + Double(index) / 8
+        group.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        group.animations = [startAnimation, endAnimation]
         
-        CATransaction.begin()
-        layer.add(animation, forKey: "animateCircle")
-        CATransaction.commit()
-        
-        
-        
+        layer.add(group, forKey: "animateCircle\(index)")
     }
     
 }
