@@ -170,20 +170,28 @@
 		669882BB2BDFCD2000152E38 /* TestWeather */ = {
 			isa = PBXGroup;
 			children = (
+				669882CD2BDFCD2100152E38 /* Info.plist */,
+				669882C82BDFCD2100152E38 /* Assets.xcassets */,
+				669882BC2BDFCD2000152E38 /* AppDelegate.swift */,
+				669882BE2BDFCD2000152E38 /* SceneDelegate.swift */,
 				66D516682BE1290B00C621F9 /* Models */,
 				6678924A2BDFE87300833942 /* Base */,
 				66D516632BE1241100C621F9 /* Extensions */,
 				667892412BDFE16100833942 /* ViewControllers */,
 				6678923C2BDFD1A500833942 /* Services */,
-				669882BC2BDFCD2000152E38 /* AppDelegate.swift */,
-				669882BE2BDFCD2000152E38 /* SceneDelegate.swift */,
-				669882C22BDFCD2000152E38 /* Main.storyboard */,
-				669882C82BDFCD2100152E38 /* Assets.xcassets */,
-				669882CA2BDFCD2100152E38 /* LaunchScreen.storyboard */,
-				669882CD2BDFCD2100152E38 /* Info.plist */,
+				66D2E9C42BE24CC900CCF74C /* Storyboards */,
 				669882C52BDFCD2000152E38 /* TestWeather.xcdatamodeld */,
 			);
 			path = TestWeather;
+			sourceTree = "<group>";
+		};
+		66D2E9C42BE24CC900CCF74C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				669882C22BDFCD2000152E38 /* Main.storyboard */,
+				669882CA2BDFCD2100152E38 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		66D5165E2BE11BC400C621F9 /* WeatherInoView */ = {
