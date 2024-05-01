@@ -19,20 +19,18 @@ class SearchViewController: BaseTableViewController {
         super.viewDidLoad()
         self.model.delegate = self
         self.model.fetchCities()
+        self.configureSearchController()
     }
     
-    // MARK: - Private
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let searchView = SearchFieldView.loadView()
-        searchView.delegate = self
-        return searchView
+    private func configureSearchController() {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Сity search"
+        self.navigationItem.searchController = search
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 76.0
-    }
-
 }
 
 // MARK: - SearchViewControllerDelegate
@@ -48,10 +46,12 @@ extension SearchViewController: SearchViewControllerDelegate {
 
 // MARK: - UISearchResultsUpdating
 
-extension SearchViewController: SearchFieldViewDelegate {
-    func updateSearchResults(_ text: String) {
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
         self.model.search(text)
     }
+
 }
  
 

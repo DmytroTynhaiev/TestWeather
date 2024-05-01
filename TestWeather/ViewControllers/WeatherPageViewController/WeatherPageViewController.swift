@@ -23,7 +23,6 @@ class WeatherPageViewController: UIPageViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureTopbar()
         self.configureBottombar()
         self.configureBackground()
         self.configurePageController()
@@ -31,15 +30,8 @@ class WeatherPageViewController: UIPageViewController {
     
     // MARK: - private
     
-    private func configureTopbar() {
-        let image = UIImage(systemName: "magnifyingglass")
-        let searchButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(searchAction))
-        searchButton.tintColor = .white
-        self.navigationItem.rightBarButtonItem = searchButton
-    }
-    
     private func configureBottombar() {
-        let list = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: nil)
+        let list = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .done, target: self, action: #selector(searchAction))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         self.pageControl.currentPage = 0
         self.pageControl.numberOfPages = controllers.count
@@ -76,7 +68,7 @@ class WeatherPageViewController: UIPageViewController {
     
     @objc func searchAction() {
         let controller = SearchViewController.instantiate()
-        self.present(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
 }
