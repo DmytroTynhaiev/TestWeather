@@ -82,7 +82,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="75" id="z3F-5I-hmd" customClass="SearchTableViewCell" customModule="TestWeather" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="75" id="z3F-5I-hmd" customClass="SearchTableViewCell" customModule="TestWeather" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z3F-5I-hmd" id="IKl-YL-0jY">
@@ -127,6 +127,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGb-I6-LvU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1483" y="-63"/>
+        </scene>
+        <!--Search Result Viewcontroller-->
+        <scene sceneID="4Za-Z2-WGE">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchResultViewcontroller" id="qsK-qk-Pga" customClass="SearchResultViewcontroller" customModule="TestWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="V63-cD-Um9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" id="9aH-bs-xgn" customClass="SearchResultViewCell" customModule="TestWeather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="37.333332061767578"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9aH-bs-xgn" id="cyU-oa-oYz">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="37.333332061767578"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lX0-9N-jE9">
+                                            <rect key="frame" x="16" y="7.9999999999999982" width="361" height="21.333333333333329"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lX0-9N-jE9" firstAttribute="top" secondItem="cyU-oa-oYz" secondAttribute="top" constant="8" id="Ued-cy-ptc"/>
+                                        <constraint firstAttribute="bottom" secondItem="lX0-9N-jE9" secondAttribute="bottom" constant="8" id="b4s-fY-jgf"/>
+                                        <constraint firstItem="lX0-9N-jE9" firstAttribute="leading" secondItem="cyU-oa-oYz" secondAttribute="leading" constant="16" id="pse-Ua-lWi"/>
+                                        <constraint firstAttribute="trailing" secondItem="lX0-9N-jE9" secondAttribute="trailing" constant="16" id="xfs-jd-NxE"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="citytLabel" destination="lX0-9N-jE9" id="Qel-5c-x6Z"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qsK-qk-Pga" id="XNf-ij-ol5"/>
+                            <outlet property="delegate" destination="qsK-qk-Pga" id="KY6-mo-ZEJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ckk-07-d3m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2290" y="-56"/>
         </scene>
     </scenes>
     <resources>

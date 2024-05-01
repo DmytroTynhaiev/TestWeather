@@ -20,7 +20,8 @@ class WeatherViewModel {
             let name = placemark.locality ?? "NAN"
             let latitude = placemark.location?.coordinate.latitude ?? 0.0
             let longitude = placemark.location?.coordinate.longitude ?? 0.0
-            let city = City(city: name, lat: "\(latitude)", lng: "\(longitude)")
+            let country = placemark.country ?? "NAN"
+            let city = City(city: name, lat: "\(latitude)", lng: "\(longitude)", country: country)
             
              
             let path = "https://api.open-meteo.com/v1/forecast"

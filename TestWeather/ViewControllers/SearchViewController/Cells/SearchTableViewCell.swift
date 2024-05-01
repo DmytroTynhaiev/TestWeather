@@ -20,8 +20,8 @@ class SearchTableViewCell: BaseTableViewCell<SearchCellModel> {
     
     override var viewModel: SearchCellModel! {
         didSet {
-            cityLabel.text = viewModel.city
-            countryLabel.text = viewModel.country
+            self.cityLabel.text = self.viewModel.city
+            self.countryLabel.text = self.viewModel.country
         }
     }
     

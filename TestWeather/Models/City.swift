@@ -20,12 +20,19 @@ class City: Codable {
         case cityASCII = "city_ascii"
     }
     
-    init(city: String, lat: String, lng: String) {
+    init(city: String, lat: String, lng: String, country: String) {
         self.city = city
         self.lat = lat
         self.lng = lng
+        self.country = country
         self.cityASCII = ""
-        self.country = ""
+    }
+    
+    convenience init(from savedCity: SavedCity)  {
+        self.init(city: savedCity.city,
+                  lat: savedCity.lat,
+                  lng: savedCity.lng,
+                  country: savedCity.country)
     }
 
 }
