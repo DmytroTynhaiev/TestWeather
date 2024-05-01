@@ -32,13 +32,6 @@ class WeatherViewController: UIViewController {
         view.center = self.containerView.center
     }
     
-    //MARK: - Actions
-    
-    @IBAction func searchAction(_ sender: Any) {
-        let controller = SearchViewController.instantiate()
-        self.present(controller, animated: true)
-    }
-    
 }
 
 // MARK: - WeatherViewControllerDelegate
